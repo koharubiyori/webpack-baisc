@@ -33,7 +33,7 @@ module.exports = [
   },
 
   {
-    test: /\.(jpe?g|png|gif|svg|webp)/,
+    test: /\.(jpe?g|png|gif|svg|webp)$/,
     type: 'asset',
     parser: {
       dataUrlCondition: {
