@@ -5,10 +5,10 @@
   "license": "MIT",
   "scripts": {
     "start": "yarn dev",
-    "dev": "npx webpack serve --config config/webpack.dev.conf.js",
-    "build": "npx webpack --config config/webpack.prod.conf.js",
-    "debug": "node --inspect-brk ./node_modules/webpack/bin/webpack.js --config config/webpack.prod.conf.js",
-    "debug:serve": "node --inspect-brk ./node_modules/webpack/bin/webpack.js serve --config config/webpack.prod.conf.js",
+    "dev": "npx cross-env NODE_ENV=development webpack serve --config config/webpack.dev.conf.js",
+    "build": "npx cross-env NODE_ENV=production webpack --config config/webpack.prod.conf.js",
+    "debug": "node --inspect-brk ./node_modules/webpack/bin/webpack.js --config config/webpack.prod.conf.js --node-env production",
+    "debug:serve": "node --inspect-brk ./node_modules/webpack/bin/webpack.js serve --config config/webpack.prod.conf.js --node-env development",
     "type-check": "tsc --noEmit",
     "type-check:watch": "npm run type-check -- --watch"
   },
