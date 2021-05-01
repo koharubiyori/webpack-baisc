@@ -5,8 +5,10 @@
   "license": "MIT",
   "scripts": {
     "start": "yarn dev",
-    "dev": "npx cross-env NODE_ENV=development webpack-dev-server  --config config/webpack.dev.conf.js",
-    "build": "npx cross-env NODE_ENV=production webpack --config config/webpack.prod.conf.js",
+    "dev": "npx webpack serve --config config/webpack.dev.conf.js",
+    "build": "npx webpack --config config/webpack.prod.conf.js",
+    "debug": "node --inspect-brk ./node_modules/webpack/bin/webpack.js --config config/webpack.prod.conf.js",
+    "debug:serve": "node --inspect-brk ./node_modules/webpack/bin/webpack.js serve --config config/webpack.prod.conf.js",
     "type-check": "tsc --noEmit",
     "type-check:watch": "npm run type-check -- --watch"
   },
@@ -23,16 +25,16 @@
     "copy-webpack-plugin": "^6.0.3",
     "cross-env": "^7.0.2",
     "css-loader": "^4.2.2",
-    "html-webpack-plugin": "^4.3.0",
+    "html-webpack-plugin": "^5.3.1",
     "mini-css-extract-plugin": "^0.11.0",
     "node-sass": "^4.14.1",
     "optimize-css-assets-webpack-plugin": "^5.0.3",
     "postcss-loader": "^3.0.0",
     "sass": "^1.26.10",
     "sass-loader": "^10.0.1",
-    "webpack": "^5.0.0-beta.29",
-    "webpack-cli": "^3.3.12",
-    "webpack-dev-server": "^3.11.0",
-    "webpack-merge": "^5.1.2"
+    "webpack": "^5.36.2",
+    "webpack-cli": "^4.6.0",
+    "webpack-dev-server": "^3.11.2",
+    "webpack-merge": "^5.7.3"
   }
 }

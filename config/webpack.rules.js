@@ -28,7 +28,17 @@ module.exports = [
             require('autoprefixer') // 添加默认前缀
           ]
         }
-      }
+      },
     ]
   },
+
+  {
+    test: /\.(jpe?g|png|gif|svg|webp)/,
+    type: 'asset',
+    parser: {
+      dataUrlCondition: {
+        maxSize: 4 * 1024
+      }
+    }
+  }
 ]

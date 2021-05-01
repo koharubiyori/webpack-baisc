@@ -1,19 +1,36 @@
 const path = require('path')
+const webpack = require('webpack')
 const { merge } = require('webpack-merge')
-const baseConfig = require('./webpack.base.conf')
+const baseWebpackConfig = require('./webpack.base.conf')
 
-module.exports = merge(baseConfig, {
-  mode: 'development',
-  devtool: 'source-map',
-
-  devServer: {
-    contentBase: path.join(__dirname, '../dist'),
-    publicPath:'/',
-    host: 'localhost',
-    port: '8089',
-    overlay: true, // 浏览器页面上显示错误
-    // open: true, // 开启自动打开浏览器
-    // stats: 'errors-only', //stats: "errors-only"表示只打印错误：
-    hot: true // 开启热更新
-  }
-})
+module.exports = async function devWebpackConfig(env) {
+  return merge(await baseWebpackConfig(env), {
+    mode: 'development',
+    devtool: 'source-map',
+    target: 'web',
+    plugins: [
+      new webpack.HotModuleReplacementPlugin(),
+    ],
+  
+    devServer: {
+      contentBase: [
+        path.resolve(__dirname, '../src'),
+        path.resolve(__dirname, '../dist')
+      ],
+      publicPath:'/',
+      host: 'localhost',
+      port: 9000,
+      hot: true, // 开启热更新
+      overlay: true, // 浏览器页面上显示错误
+      // open: true, // 开启自动打开浏览器
+      stats: {
+        preset: 'errors-only',
+        colors: true
+      },
+      hot: true,
+      watchContentBase: true,
+      disableHostCheck: true,
+      inline: true,
+    }
+  })
+}

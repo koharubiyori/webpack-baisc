@@ -9,4 +9,5 @@
 * typescript
 * 开发服务器
 * css、js代码压缩
+* 资源文件导入
 * 自动生成html
